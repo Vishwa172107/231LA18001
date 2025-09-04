@@ -1,11 +1,14 @@
 const express = require('express');
 const cors = require('cors');
-const bcrypt = require('bcryptjs');
+const mongoose = require('mongoose');
+require('dotenv').config();
+const apiRouter = require('./api/api');
 
 const app = express();
 const PORT = process.env.PORT || 5555;
-app.use(cors({origin: '*'}));
+app.use(cors({ origin: '*' }));
 app.use(express.json());
+app.use('/api', apiRouter);
 
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
