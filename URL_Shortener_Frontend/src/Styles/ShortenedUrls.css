@@ -1,0 +1,101 @@
+/* Container */
+.shortened-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+}
+
+.shortened-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+/* Messages */
+.loading-msg,
+.error-msg,
+.no-data-msg {
+  font-size: 1rem;
+  text-align: center;
+  color: #555;
+}
+
+/* List */
+.url-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Card */
+.url-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* Header */
+.url-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.url-info {
+  flex: 1;
+}
+
+.url-original,
+.url-short {
+  font-size: 0.9rem;
+  margin: 0.3rem 0;
+}
+
+.url-original a {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.url-short a {
+  color: #28a745;
+  text-decoration: underline;
+}
+
+.url-meta {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.url-toggle {
+  font-size: 1rem;
+  color: #444;
+  margin-left: 1rem;
+}
+
+/* Expanded details */
+.url-details {
+  margin-top: 1rem;
+  padding-left: 1rem;
+  border-left: 3px solid #eee;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.access-list {
+  list-style: disc inside;
+  margin-top: 0.5rem;
+  margin-left: 1rem;
+  color: #555;
+}
+
+.no-logs {
+  font-size: 0.8rem;
+  color: #888;
+}

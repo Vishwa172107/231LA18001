@@ -1,0 +1,80 @@
+/* Container */
+.shortener-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Form */
+.shortener-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.shortener-form-block {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+}
+
+/* Inputs */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.form-input {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Divider */
+.divider {
+  margin-top: 1rem;
+  border: none;
+  border-top: 1px solid #eee;
+}
+
+/* Add Form Button */
+.add-form-btn {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+/* Submit Button */
+.submit-btn {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  background: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.submit-btn:hover {
+  background: #0056b3;
+}

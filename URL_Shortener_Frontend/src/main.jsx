@@ -5,12 +5,16 @@ import {NewShortUrl} from "./pages/new-short-url.jsx"
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import {ShortenedResult} from "./pages/ShortenedResult.jsx"
 import { ShortenedUrls } from './pages/shortened_urls.jsx'
+import { Navbar } from './pages/Navbar.jsx'
+import { Home } from './pages/Home.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Router>
+      <Navbar/>
       <Routes>
-        <Route path='/' element={<NewShortUrl/>}/>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/new' element={<NewShortUrl/>}/>
         <Route path='/shortened-result' element={<ShortenedResult/>}/>
         <Route path='/shortened' element={<ShortenedUrls/>}/>
       </Routes>

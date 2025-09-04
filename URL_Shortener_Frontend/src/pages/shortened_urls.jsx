@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { api } from "../utils/api";
 import { FaChevronRight, FaChevronDown } from "react-icons/fa";
+import '../styles/ShortenedUrls.css';
 
 export const ShortenedUrls = () => {
     const [urls, setUrls] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [expanded, setExpanded] = useState({});
+
     const fetchUrls = async () => {
         try {
             const response = await axios.get(api.GetAllURL);
@@ -31,65 +33,60 @@ export const ShortenedUrls = () => {
         }));
     };
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>{error}</p>;
+    if (loading) return <p className="loading-msg">Loading...</p>;
+    if (error) return <p className="error-msg">{error}</p>;
 
     return (
-        <div className="p-4">
-            <h2 className="text-xl font-semibold mb-4">Shortened URLs</h2>
+        <div className="shortened-container">
+            <h2 className="shortened-title">Shortened URLs</h2>
             {urls.length === 0 ? (
-                <p>No URLs found.</p>
+                <p className="no-data-msg">No URLs found.</p>
             ) : (
-                <ul className="space-y-3">
+                <ul className="url-list">
                     {urls.map((url) => (
-                        <li
-                            key={url._id}
-                            className="border rounded-lg p-3 shadow-sm bg-white"
-                        >
+                        <li key={url._id} className="url-card">
                             <div
-                                className="flex justify-between items-center cursor-pointer"
+                                className="url-header"
                                 onClick={() => toggleExpand(url._id)}
                             >
-                                <div>
-                                    <p className="text-sm text-gray-600">
+                                <div className="url-info">
+                                    <p className="url-original">
                                         Original:{" "}
                                         <a
                                             href={url.originalURL}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-blue-600 underline"
                                         >
                                             {url.originalURL}
                                         </a>
                                     </p>
-                                    <p className="text-sm">
+                                    <p className="url-short">
                                         Short:{" "}
                                         <a
                                             href={`http://localhost:5555/${url.shortURL}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-green-600 underline"
                                         >
                                             {`http://localhost:5555/${url.shortURL}`}
                                         </a>
                                     </p>
-                                    <p className="text-xs text-gray-500">
+                                    <p className="url-meta">
                                         Expires:{" "}
                                         {new Date(url.expireAt).toLocaleString()} | Created:{" "}
                                         {new Date(url.createdAt).toLocaleString()}
                                     </p>
                                 </div>
-                                <div>
+                                <div className="url-toggle">
                                     {expanded[url._id] ? (
-                                        <FaChevronDown className="text-gray-600" />
+                                        <FaChevronDown />
                                     ) : (
-                                        <FaChevronRight className="text-gray-600" />
+                                        <FaChevronRight />
                                     )}
                                 </div>
                             </div>
 
                             {expanded[url._id] && (
-                                <div className="mt-3 pl-4 border-l text-sm text-gray-700 space-y-1">
+                                <div className="url-details">
                                     <p>
                                         <strong>Access Count:</strong>{" "}
                                         {url.accessCount || 0}
@@ -97,7 +94,7 @@ export const ShortenedUrls = () => {
                                     <div>
                                         <strong>Access Info:</strong>
                                         {url.accessInfo && url.accessInfo.length > 0 ? (
-                                            <ul className="list-disc list-inside">
+                                            <ul className="access-list">
                                                 {url.accessInfo.map((info, idx) => (
                                                     <li key={idx}>
                                                         {info.ipAddress} — {info.userAgent}
@@ -105,7 +102,7 @@ export const ShortenedUrls = () => {
                                                 ))}
                                             </ul>
                                         ) : (
-                                            <p className="text-gray-500">No access logs yet.</p>
+                                            <p className="no-logs">No access logs yet.</p>
                                         )}
                                     </div>
                                 </div>

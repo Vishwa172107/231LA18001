@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { api } from "../utils/api.js";
 import { PlusCircle } from 'react-bootstrap-icons';
+import '../styles/NewShortUrl.css';
 
 export const NewShortUrl = () => {
     const formStructure = {
@@ -32,7 +33,6 @@ export const NewShortUrl = () => {
         }
     };
 
-    // Start with one empty form entry
     const [formData, setFormData] = useState([{}]);
     const navigate = useNavigate();
 
@@ -64,15 +64,16 @@ export const NewShortUrl = () => {
     };
 
     return (
-        <div className="container">
-            <form onSubmit={handleSubmit}>
+        <div className="shortener-container">
+            <form className="shortener-form" onSubmit={handleSubmit}>
                 {formData.map((entry, index) => (
-                    <div key={index} className="url-form">
+                    <div key={index} className="shortener-form-block">
                         {Object.entries(formStructure).map(([key, config]) => (
-                            <div key={key} className="form_group">
-                                <label>{config.label}</label>
+                            <div key={key} className="form-group">
+                                <label className="form-label">{config.label}</label>
                                 <input
                                     type={config.type}
+                                    className="form-input"
                                     placeholder={config.placeholder}
                                     value={entry[key] || ""}
                                     onChange={(e) => handleChange(e, index, key)}
@@ -82,20 +83,22 @@ export const NewShortUrl = () => {
                                 />
                             </div>
                         ))}
-                        <hr />
+                        <hr className="divider" />
                     </div>
                 ))}
 
                 {formData.length < 5 && (
-                    <PlusCircle
-                        size={30}
-                        color="blue"
-                        onClick={addNewForm}
-                        style={{ cursor: 'pointer' }}
-                    />
+                    <div className="add-form-btn">
+                        <PlusCircle
+                            size={30}
+                            color="blue"
+                            onClick={addNewForm}
+                            style={{ cursor: 'pointer' }}
+                        />
+                    </div>
                 )}
 
-                <button type="submit">Submit</button>
+                <button type="submit" className="submit-btn">Submit</button>
             </form>
         </div>
     );
