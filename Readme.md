@@ -5,6 +5,7 @@ A simple URL shortener app with expiration, analytics (access count + logs), and
 ---
 
 ## 🚀 Features
+
 - Shorten long URLs into simple short links
 - Auto-expire and delete URLs after their expiry time
 - Track number of clicks and access logs (IP, User Agent)
@@ -14,6 +15,7 @@ A simple URL shortener app with expiration, analytics (access count + logs), and
 ---
 
 ## 🛠 Tech Stack
+
 - **Frontend**: React (Vite), Tailwind CSS
 - **Backend**: Node.js, Express.js, MongoDB, Mongoose
 - **Other**: Axios, React Router
@@ -21,49 +23,46 @@ A simple URL shortener app with expiration, analytics (access count + logs), and
 ---
 
 ## 📂 Project Structure
+
 project-root/
 │── backend/ # Express + MongoDB backend
 │── frontend/ # React frontend (Vite)
 │── README.md # Documentation
-
-yaml
-Copy code
 
 ---
 
 ## ⚙️ Setup Instructions
 
 ### 1️⃣ Clone the Repository
-```bash
+
 git clone https://github.com/your-username/url-shortener.git
 cd url-shortener
+
 2️⃣ Backend Setup
-bash
+
 Copy code
 cd backend
 npm install
+
 🔑 Environment Variables
 Create a .env file inside backend/ with the following:
 
-ini
-Copy code
 PORT=5555
 MONGO_URI=mongodb://localhost:27017/urlshortener
 CLIENT_URL=http://localhost:3000
+
 ▶️ Start Backend
-bash
-Copy code
-npm start
+
+node server.js
 Backend will run on http://localhost:5555
 
 3️⃣ Frontend Setup
-bash
-Copy code
+
 cd frontend
 npm install
+
 ▶️ Start Frontend
-bash
-Copy code
+
 npm run dev -- --port 3000
 Frontend will run on http://localhost:3000
 
